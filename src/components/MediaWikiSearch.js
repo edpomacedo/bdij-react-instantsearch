@@ -15,7 +15,7 @@ const MediaWikiSearch = () => {
       
       // Para cada resultado, fazer uma chamada individual para obter mais informações
       const detailedResults = await Promise.all(searchResults.map(async result => {
-        const detailedResponse = await axios.get(`https://web.bdij.com.br/w/rest.php/v1/page/${result.title}`);
+        const detailedResponse = await axios.get(`https://bdij-proxy.onrender.com/proxy?resource=${result.title}`);
         return {
           id: result.id,
           title: result.title,
