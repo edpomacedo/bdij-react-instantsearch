@@ -10,12 +10,12 @@ const MediaWikiSearch = () => {
 
   const searchMediaWiki = async () => {
     try {
-      const response = await axios.get(`https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=${query}&origin=*`);
+      const response = await axios.get(`https://web.bdij.com.br/w/api.php?action=query&format=json&list=search&srsearch=${query}&origin=*`);
       const searchResults = response.data.query.search;
       
       // Para cada resultado, fazer uma chamada individual para obter mais informações
       const detailedResults = await Promise.all(searchResults.map(async result => {
-        const detailedResponse = await axios.get(`https://en.wikipedia.org/w/rest.php/v1/page/${result.title}`);
+        const detailedResponse = await axios.get(`https://web.bdij.com.br/w/rest.php/v1/page/${result.title}`);
         return {
           id: result.id,
           title: result.title,
